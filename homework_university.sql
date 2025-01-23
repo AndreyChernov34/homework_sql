@@ -53,8 +53,8 @@ select * from student, course, faculty
 --1. Вывести всех студентов, кто платит больше 30_000.
 select student.name, student.surname, student.secondname, faculty.education_price
 from student 
-join course on student.course_id = course.id
-join faculty on course.faculty_id = faculty.id	
+inner join course on student.course_id = course.id
+inner join faculty on course.faculty_id = faculty.id	
 where student.budghet = false and faculty.education_price > cast(30000 as money)
 
 --2. Перевести всех студентов Петровых на 1 курс экономического факультета.
