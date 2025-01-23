@@ -26,6 +26,7 @@ insert into faculty values (2, 'Экономический', 49000.00);
 
 --2. Создать 1 курс на Инженерном факультете: 1 курс
 insert into course values (1, 1, 1);
+
 --3. Создать 2 курса на экономическом факультете: 1, 4 курс
 insert into course values (2, 1, 2);
 insert into course values (3, 4, 2);
@@ -52,17 +53,17 @@ select * from student, course, faculty
 --1. Вывести всех студентов, кто платит больше 30_000.
 select student.name, student.surname, student.secondname, faculty.education_price
 from student 
-	join course on student.course_id = course.id
-	join faculty on course.faculty_id = faculty.id	
+join course on student.course_id = course.id
+join faculty on course.faculty_id = faculty.id	
 where student.budghet = false and faculty.education_price > cast(30000 as money)
 
 --2. Перевести всех студентов Петровых на 1 курс экономического факультета.
 update student set course_id = 2
-	where student.surname='Петров'
+where student.surname='Петров'
 
 select student.name, student.surname, student.course_id
-	from student 
-	where student.surname='Петров'
+from student 
+where student.surname='Петров'
 	
 --3. Вывести всех студентов без отчества или фамилии.
 
@@ -75,9 +76,7 @@ select student.name, student.surname, student.secondname
 from student
 where student.surname like '%ван%' or student.name like '%ван%' or student.secondname like '%ван%'
 
-
-5. Удалить все записи из всех таблиц.
-
+--5. Удалить все записи из всех таблиц.
 delete from student;
 delete from course; 
 delete from faculty;
